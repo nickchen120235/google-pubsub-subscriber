@@ -7,4 +7,5 @@ interface PubSubData {
 
 cloudEvent<PubSubData>('test-subscriber', event => {
   console.log(`data: ${event.data!.message.data}`)
+  console.log(`decoded data: ${event.data!.message.data.toString('ascii')}`)
 })
