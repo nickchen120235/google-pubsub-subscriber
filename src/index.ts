@@ -1,6 +1,7 @@
-import functions from '@google-cloud/functions-framework'
+import { cloudEvent } from '@google-cloud/functions-framework'
 
-functions.cloudEvent('test-subscriber', event => {
+cloudEvent('test-subscriber', event => {
   console.log(`content type: ${event.datacontenttype}`)
-  console.log(`data: ${event.data}`)
+  // @ts-expect-error wtf google
+  console.log(`data: ${event.data.message.data}`)
 })
