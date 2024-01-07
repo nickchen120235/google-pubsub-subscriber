@@ -1,7 +1,10 @@
 import { cloudEvent } from '@google-cloud/functions-framework'
+import { type Message } from '@google-cloud/pubsub'
 
-cloudEvent('test-subscriber', event => {
-  console.log(`content type: ${event.datacontenttype}`)
-  // @ts-expect-error wtf google
-  console.log(`data: ${event.data.message.data}`)
+interface PubSubData {
+  message: Message
+}
+
+cloudEvent<PubSubData>('test-subscriber', event => {
+  console.log(`data: ${event.data!.message.data}`)
 })
