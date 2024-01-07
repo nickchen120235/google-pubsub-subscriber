@@ -29,4 +29,4 @@ jobs:
           gcloud functions deploy pubsub-subscriber --project=${{ secrets.GCP_PROJECT }} \
           --gen2 --runtime=nodejs18 --trigger-topic=test-topic \
           --region=us-west1 --memory=128MiB --max-instances=1 \
-          --source=build
+          --source=build --entry-point=test-subscriber
