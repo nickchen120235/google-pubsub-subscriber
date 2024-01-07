@@ -6,5 +6,5 @@ interface PubSubData {
 }
 
 cloudEvent<PubSubData>('test-subscriber', event => {
-  console.log(`data: ${event.data!.message.attributes}`)
+  console.log(`data: ${JSON.stringify(event.data!.message.attributes)}`)
 })
